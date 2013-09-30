@@ -2,7 +2,15 @@
 
 
 
+
+
+
+
     <head>
+
+
+
+
 
 
 
@@ -10,7 +18,15 @@
 
 
 
+
+
+
+
         <link rel="stylesheet" href="jquery/jquery.mobile-1.1.0.min.css" />
+
+
+
+
 
 
 
@@ -18,7 +34,15 @@
 
 
 
+
+
+
+
        
+
+
+
+
 
 
 
@@ -26,25 +50,51 @@
 
 
 
+
+
+
+
         <script src="jquery/jquery.mobile-1.1.0.js"></script>
 
+
+
         
+
+
 
         <script>
 
+
+
        if( (navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/Android/i)) ){
+
+
 
         
 
+
+
         	$.getScript("cordova-2.0.0.js");
+
+
 
 			$.getScript("phonegap.js");
 
+
+
 			$.getScript("PushNotification.js");			
+
+
 
 		}
 
+
+
 		</script>
+
+
+
+
 
 
 
@@ -56,7 +106,19 @@
 
 
 
+
+
+
+
+
+
+
+
         <script type="text/javascript" charset="utf-8" src="childbrowser.js"></script>
+
+
+
+
 
 
 
@@ -64,7 +126,15 @@
 
 
 
+
+
+
+
             var markersArray = [];
+
+
+
+
 
 
 
@@ -72,9 +142,19 @@
 
 
 
+
+
+
+
                 
 
+
+
                 var maphigh = $.mobile.activePage.height() - $.mobile.activePage.children('[data-role="footer"]').height() - 20;
+
+
+
+
 
 
 
@@ -82,7 +162,15 @@
 
 
 
+
+
+
+
                 var mapOptions = {
+
+
+
+
 
 
 
@@ -90,7 +178,15 @@
 
 
 
+
+
+
+
                     center: new google.maps.LatLng(21.910082, 39.118452),
+
+
+
+
 
 
 
@@ -98,7 +194,15 @@
 
 
 
+
+
+
+
                 };
+
+
+
+
 
 
 
@@ -106,7 +210,15 @@
 
 
 
+
+
+
+
                 console.log(mapDiv);
+
+
+
+
 
 
 
@@ -114,7 +226,19 @@
 
 
 
+
+
+
+
                 addMarkerForAddress();
+
+
+
+
+
+
+
+
 
 
 
@@ -128,7 +252,17 @@
 
 
 
+
+
+
+
+
+
           
+
+
+
+
 
 
 
@@ -140,7 +274,19 @@
 
 
 
+
+
+
+
+
+
+
+
                 var address = $("#address").val();
+
+
+
+
 
 
 
@@ -148,7 +294,15 @@
 
 
 
+
+
+
+
                 geocoder.geocode({'address': address}, function(results, status) {
+
+
+
+
 
 
 
@@ -156,7 +310,15 @@
 
 
 
+
+
+
+
                         var returnedValue = results[0].geometry.location;
+
+
+
+
 
 
 
@@ -164,7 +326,15 @@
 
 
 
+
+
+
+
                     } else {
+
+
+
+
 
 
 
@@ -172,11 +342,27 @@
 
 
 
+
+
+
+
                     }
 
 
 
+
+
+
+
                 });
+
+
+
+
+
+
+
+
 
 
 
@@ -188,7 +374,15 @@
 
 
 
+
+
+
+
             function addMarker(latLng, title, contentString) {
+
+
+
+
 
 
 
@@ -196,7 +390,15 @@
 
 
 
+
+
+
+
                 var markerOptions = new google.maps.Marker({
+
+
+
+
 
 
 
@@ -204,7 +406,15 @@
 
 
 
+
+
+
+
                     position: latLng,
+
+
+
+
 
 
 
@@ -212,11 +422,23 @@
 
 
 
+
+
+
+
                     clickable: true
 
 
 
+
+
+
+
                 });
+
+
+
+
 
 
 
@@ -228,7 +450,19 @@
 
 
 
+
+
+
+
+
+
+
+
                 var infoWindowOptions = {
+
+
+
+
 
 
 
@@ -236,7 +470,15 @@
 
 
 
+
+
+
+
                     position: latLng
+
+
+
+
 
 
 
@@ -244,7 +486,15 @@
 
 
 
+
+
+
+
                 var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+
+
+
 
 
 
@@ -252,7 +502,15 @@
 
 
 
+
+
+
+
                     infoWindow.open(map);
+
+
+
+
 
 
 
@@ -260,7 +518,15 @@
 
 
 
+
+
+
+
             }
+
+
+
+
 
 
 
@@ -272,7 +538,135 @@
 
 
 
-        <!--Turn off notification-->
+
+
+
+
+
+
+
+
+        <script type="text/javascript" src="PushNotification.js"></script>
+
+<script type="text/javascript">
+
+    var pushNotification;
+
+    var app_id = "183";
+
+    var message;
+
+            
+
+    function onDeviceReady() {
+
+                
+
+        pushNotification = window.plugins.pushNotification;
+
+				
+
+        if (device.platform == 'android' || device.platform == 'Android') {
+
+            pushNotification.register(successHandler, errorHandler, {"senderID":"339112080650","ecb":"onNotificationGCM"});
+
+        } else {
+
+            pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});
+
+        }
+
+    }
+
+            
+
+    /* handle APNS notifications for iOS*/
+
+    function onNotificationAPN(event) {
+
+        if (event.alert) {
+
+            navigator.notification.alert(event.alert);
+
+        }
+
+                
+
+        if (event.sound) {
+
+            var snd = new Media(event.sound);
+
+            snd.play();
+
+        }
+
+                
+
+        if (event.badge) {
+
+            pushNotification.setApplicationIconBadgeNumber(successHandler, event.badge);
+
+        }
+
+    }
+
+            
+
+            
+
+    function onNotificationGCM(e) {
+
+        if(e.event == 'message'){
+
+            if(e.payload.app_id == app_id)
+
+                alert(e.message);
+
+        }
+
+    }
+
+            
+
+    function tokenHandler (result) {
+
+        /*$("#app-status-ul").append('<li>token: '+ result +'</li>');*/
+
+        /* Your iOS push server needs to know the token before it can push to this device*/
+
+        /* here is where you might want to send it the token for later use.*/
+
+    }
+
+			
+
+    function successHandler (result) {
+
+        /*$("#app-status-ul").append('<li>success:'+ result +'</li>');*/
+
+    }
+
+            
+
+    function errorHandler (error) {
+
+        /*alert("function_errorHandler");*/
+
+        /*$("#app-status-ul").append('<li>error:'+ error +'</li>');*/
+
+    }
+
+            
+
+    document.addEventListener('deviceready', onDeviceReady, true);
+
+
+
+</script>
+
+
+
+
 
 
 
@@ -280,7 +674,19 @@
 
 
 
+
+
+
+
     <body>
+
+
+
+
+
+
+
+
 
 
 
@@ -296,7 +702,19 @@
 
 
 
+
+
+
+
+
+
+
+
             <div data-role="header">
+
+
+
+
 
 
 
@@ -304,7 +722,15 @@
 
 
 
+
+
+
+
                 </div>
+
+
+
+
 
 
 
@@ -312,7 +738,15 @@
 
 
 
+
+
+
+
             <a id="homeButton" href="index.html" rel="external" ><img src="./home.png" alt="Home" /></a>
+
+
+
+
 
 
 
@@ -320,7 +754,15 @@
 
 
 
+
+
+
+
                 #homeButton{position: relative;top: -28px;left: 5px;width: 75px;height: 18px;display: block;text-align: center;}
+
+
+
+
 
 
 
@@ -328,7 +770,19 @@
 
 
 
+
+
+
+
             </style>
+
+
+
+
+
+
+
+
 
 
 
@@ -344,12 +798,33 @@
 
 
 
+
+
+
+
+
+
+
+
                 <input id="address" type="hidden" value="26 South John Anderson Drive
+
 Ormond Beach, FL 32176"/>
 
 
 
+
+
+
+
                 <div id="map" style="height: 100%;width: 100%;"></div>
+
+
+
+
+
+
+
+
 
 
 
@@ -369,7 +844,23 @@ Ormond Beach, FL 32176"/>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
             <style> .nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; width: 60px!important;}		.nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }#tab1 .ui-icon { background:  url("icons_tech_1579.png") 50% 50% no-repeat; background-size: 50px 50px; }#tab2 .ui-icon { background:  url("icons_communication_1092.png") 50% 50% no-repeat; background-size: 50px 50px; }  a[href="photos.html"] .ui-icon { background:  url("icon(64).png") 50% 50% no-repeat !important;background-size: 30px 30px !important; }   a[href="openingHours.html"] .ui-icon { background:  url("icon(98).png") 50% 50% no-repeat !important;background-size: 30px 30px !important; }   a[href="location.html"] .ui-icon { background:  url("icon(225).png") 50% 50% no-repeat !important;background-size: 30px 30px !important; }   a[href="aboutUs.html"] .ui-icon { background:  url("icon(171).png") 50% 50% no-repeat !important;background-size: 30px 30px !important; } #tab3 .ui-icon { background:  url("64Px_-_504-11.png") 50% 50% no-repeat; background-size: 30px 30px; }#tab4 .ui-icon { background:  url("64Px_-_504-210.png") 50% 50% no-repeat; background-size: 30px 30px; }#tab5 .ui-icon { background:  url("more.png") 50% 50% no-repeat; background-size: 30px 30px; }</style>
+
+
+
+
 
 
 
@@ -377,11 +868,23 @@ Ormond Beach, FL 32176"/>
 
 
 
+
+
+
+
         </div>
 
 
 
+
+
+
+
     </body>
+
+
+
+
 
 
 
