@@ -50,7 +50,7 @@
 
             function checkTotleCount() {
 
-                if ($('.content_navigation_link h3 a').length == 1) {
+                if ($('.content_navigation_link  a').length == 1) {
 
                     $('#content_navigation_content').hide();
 
@@ -74,7 +74,7 @@
 
                 });
 
-                $('.content_navigation_link h3 a').click(function() {
+                $('.content_navigation_link  a').click(function() {
 
                     $('#content_navigation_content').hide();
 
@@ -160,42 +160,41 @@
 
 
                 <style type="text/css">
-                    .content_navigation_content div,.content_navigation_content p,.content_navigation_content ul,.content_navigation_content h2,.content_navigation_content h3,.content_navigation_content h4,.content_navigation_content img{
-                        padding:0px; 
-                        margin:0px;
-                    }
-                    .content_navigation_link h3 a{
-                        text-decoration:none;
-                    }
-                    .content_navigation_link{
-                        width: 100%;
-                        text-align: center;
-                        line-height: 50px;
-                        display: block;
-                        height: 50px;
-                        border-bottom: 1px solid white;
-                    }
-                    #content_navigation_content{
-                        /*                        overflow: hidden;
-                                                width: 200px;*/
-                        background: grey;
-                        margin: 0 auto;
-                        border-radius: 10px;
-                        /*                        position: fixed;
-                                                left: 50%;
-                                                top: 40px;*/
-                        /*margin-left: -100px;*/
-                        border-radius: 10px; 
-                        box-shadow: 8px 8px 8px silver;
-                    }
-                    .content_navigation_link a{
-                        color:white !important;
-                        display:block;
-                    }
-                    .content_navigation_link:hover, .content_navigation_link:active{
-                        background: #27a1c5;
-                        cursor:pointer;
-                    }
+                    /*                    .content_navigation_content div,.content_navigation_content p,.content_navigation_content ul,.content_navigation_content h2,.content_navigation_content h3,.content_navigation_content h4,.content_navigation_content img{
+                                            padding:0px; 
+                                            margin:0px;
+                                        }*/
+                    /*                    .content_navigation_link h3 a{
+                                            text-decoration:none;
+                                        }
+                                        .content_navigation_link{
+                                            width: 100%;
+                                            text-align: center;
+                                            line-height: 50px;
+                                            display: block;
+                                            height: 50px;
+                                        }*/
+                    /*                    #content_navigation_content{
+                                                                    overflow: hidden;
+                                                                    width: 200px;
+                                            background: grey;
+                                            margin: 0 auto;
+                                            border-radius: 10px;
+                                                                    position: fixed;
+                                                                    left: 50%;
+                                                                    top: 40px;
+                                            margin-left: -100px;
+                                            border-radius: 10px; 
+                                            box-shadow: 8px 8px 8px silver;
+                                        }*/
+                    /*                    .content_navigation_link a{
+                                            color:white !important;
+                                            display:block;
+                                        }*/
+                    /*                    .content_navigation_link:hover, .content_navigation_link:active{
+                                            background: #27a1c5;
+                                            cursor:pointer;
+                                        }*/
                     .active{
                         background: #27a1c5;
                         cursor:pointer;
@@ -207,15 +206,15 @@
                     #navigationContent{
                         /*position: relative;*/
                     }
-                    .content_navigation_link:first-child{
-                        border-radius: 10px 10px 0px 0px; 
-                    }
-                    .content_navigation_link:last-child{
-                        border-radius: 0px 0px 10px 10px; 
-                    }
-                    .content_navigation_link .active{
-                        background: none;
-                    }
+                    /*                    .content_navigation_link:first-child{
+                                            border-radius: 10px 10px 0px 0px; 
+                                        }
+                                        .content_navigation_link:last-child{
+                                            border-radius: 0px 0px 10px 10px; 
+                                        }
+                                        .content_navigation_link .active{
+                                            background: none;
+                                        }*/
                     #backMenu{
                         position: fixed;
                         bottom: 75px;
@@ -229,9 +228,9 @@
                     }
                 </style>
                 <div id="navigationContent">
-                    <div id="content_navigation_content" class="content_navigation_content"><div class="content_navigation_link"><h3><a href="#article1">Vendors</a></h3></div><div class="content_navigation_link"><h3><a href="#article2">Performers</a></h3></div></div>
-                    <div id="content_blocks"><div class="content_block" id="article1"><p><a href="http://ormondbeachcelticfestival.com/vendors.html"><strong>Vendor Application</strong></a></p>
-</div><div class="content_block" id="article2"><p><a href="http://ormondbeachcelticfestival.com/entertainers.html"><strong>Performers for 2014</strong></a></p>
+                      <ul id="content_navigation_content" class="content_navigation_content active" data-role="listview" data-inset="true" data-theme="a"><li class="content_navigation_link"><a href="#article1">Vendor Applicatiion</a></li><li class="content_navigation_link"><a href="#article2">Clan Application</a></li></ul>
+                    <div id="content_blocks"><div class="content_block" id="article1"><p><a href="http://www.ormondbeachcelticfestival.com/2013celticvendorapp.pdf"><strong>Vendor Application</strong></a></p>
+</div><div class="content_block" id="article2"><p><a href="http://www.ormondbeachcelticfestival.com/2014celticclanapp.pdf"><strong>Clan Application</strong></a></p>
 </div></div>
                     <img id="backMenu" src="./backMenu.png">
                 </div>                
